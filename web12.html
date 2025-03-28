@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShadowVortex Web</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdAo3OFgSbat48EZ0uVr0gPkZnwlwto9KXYw&s') no-repeat center center fixed;
+      background-size: cover;
+      padding: 20px;
+      color: white;
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      animation: fadeInScale 1s ease-in-out;
+    }
+    .main-title {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #FFD700;
+      animation: glitch 1.5s infinite;
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .overlay button {
+      font-size: 24px;
+      padding: 15px 30px;
+      background: #FFD700;
+      color: black;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .box {
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+    .youtube-box {
+      background-color: red;
+      border: 2px solid white;
+    }
+    .discord-box {
+      background-color: blue;
+      border: 2px solid white;
+    }
+    .box a {
+      display: inline-block;
+      padding: 10px;
+      margin-top: 5px;
+      border: 2px solid white;
+      border-radius: 5px;
+      color: white;
+      text-decoration: none;
+    }
+    .title, .discord-title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay" id="overlay">
+    <button onclick="startWebsite()">@hairoblox123 - Click để mở</button>
+  </div>
+  <div class="container" id="main-content" style="display: none;">
+    <p class="main-title">✨ ShadowVortex ✨</p>
+    
+    <div class="box youtube-box">
+      <p class="title">🔴 Sub Cho Kênh YouTuber</p>
+      <a href="https://www.youtube.com/@hairoblox123" target="_blank">
+        <i class="fab fa-youtube icon"></i> Click vào đây để xem kênh YouTube!
+      </a>
+    </div>
+    
+    <div class="box discord-box">
+      <p class="discord-title">🌐 Tham Gia Server Discord</p>
+      <a href="https://discord.gg/xnB4WxW42x" target="_blank">
+        <i class="fab fa-discord icon"></i> Click vào đây để vào Discord Hài Roblox
+      </a>
+    </div>
+  </div>
+  <iframe id="background-music" width="0" height="0" style="display:none;" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+  <script>
+    function startWebsite() {
+      document.getElementById("overlay").style.display = "none";
+      document.getElementById("main-content").style.display = "block";
+      
+      let musicFrame = document.getElementById("background-music");
+      musicFrame.src = "https://www.youtube.com/embed/ts7k3qrRvtM?autoplay=1&loop=1&playlist=ts7k3qrRvtM";
+      musicFrame.style.display = "block";
+    }
+  </script>
+</body>
+</html>
