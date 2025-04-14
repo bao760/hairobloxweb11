@@ -2,6 +2,7 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Script Dead Rails</title>
   <style>
     body {
@@ -9,6 +10,8 @@
       padding: 30px;
       background-color: #1f1f1f;
       color: white;
+      margin: 0;
+      overflow-x: hidden;
     }
     .script-box {
       background-color: #2a2a2a;
@@ -49,27 +52,36 @@
     .copy-btn:hover {
       background-color: #5352ed;
     }
-
     .music-prompt {
       background-color: #2a2a2a;
       border: 2px solid #7bed9f;
-      padding: 20px;
+      padding: 30px;
       border-radius: 12px;
       text-align: center;
-      margin-bottom: 30px;
+      margin: 20px auto;
+      max-width: 600px;
+      position: relative;
+      animation: fadeInScale 0.8s ease-out;
+      box-shadow: 0 0 20px rgba(123, 237, 159, 0.5);
     }
     .music-prompt h2 {
-      font-size: 22px;
-      margin-bottom: 20px;
+      font-size: 28px;
+      margin-bottom: 25px;
+      color: #ffffff;
+      text-shadow: 0 0 5px #7bed9f;
     }
     .music-btn {
       display: inline-block;
-      margin: 10px;
-      padding: 12px 20px;
+      margin: 15px;
+      padding: 15px 25px;
       border-radius: 10px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 18px;
       font-weight: bold;
+      transition: transform 0.2s;
+    }
+    .music-btn:hover {
+      transform: scale(1.1);
     }
     .music-on {
       background-color: #2ed573;
@@ -81,8 +93,6 @@
       border: 2px solid #e84118;
       color: white;
     }
-
-    /* Tạo khung cho Main Skull Script */
     .main-skull-script {
       background-color: #2a2a2a;
       border: 1px solid #444;
@@ -101,23 +111,27 @@
       display: inline;
       color: #ffa502;
     }
+    /* Animation cho intro */
+    @keyframes fadeInScale {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
   </style>
 </head>
 <body>
-
-  <!-- Hộp hỏi người dùng muốn bật nhạc hay không -->
   <div id="musicPrompt" class="music-prompt">
     <h2>Bạn muốn Bật nhạc chứ 🙃?</h2>
     <div class="music-btn music-on" onclick="playMusic()">Tôi Muốn Hãy Bật🟢</div>
     <div class="music-btn music-off" onclick="hidePrompt()">Tôi Không Thích Nhạc🔴</div>
   </div>
-
-  <!-- iframe phát nhạc sẽ được tạo bằng JavaScript khi người chọn bật -->
   <div id="musicContainer"></div>
-
-  <!-- Các Script -->
   <h2>Script Dead Rails</h2>
-
   <div class="script-box">
     <div class="script-title">
       Auto Win(<span class="vip-text">Vip</span>) 🟢⬇
@@ -127,7 +141,6 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/gumanba/Scripts/main/
     </div>
     <button class="copy-btn" onclick="copyScript('script1')">📎 Sao chép</button>
   </div>
-
   <div class="script-box">
     <div class="script-title">
       Npc Lock Aim 🟢⬇
@@ -137,8 +150,6 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Sonnek1203/chuotnekhu
     </div>
     <button class="copy-btn" onclick="copyScript('script2')">📎 Sao chép</button>
   </div>
-
-  <!-- Thêm khung cho Main Skull Script -->
   <div class="main-skull-script">
     <div class="main-skull-script-title">
       Main Skull Script🟢⬇(<span class="getkey-text">GetKey</span>)
@@ -148,7 +159,6 @@ loadstring(game:HttpGet('https://skullhub.xyz/loader.lua'))()
     </div>
     <button class="copy-btn" onclick="copyScript('script4')">📎 Sao chép</button>
   </div>
-
   <script>
     function copyScript(id) {
       const script = document.getElementById(id).innerText.trim();
@@ -158,7 +168,6 @@ loadstring(game:HttpGet('https://skullhub.xyz/loader.lua'))()
         alert("❌ Lỗi khi sao chép: " + err);
       });
     }
-
     function playMusic() {
       document.getElementById('musicPrompt').style.display = 'none';
       const iframe = document.createElement('iframe');
@@ -170,12 +179,9 @@ loadstring(game:HttpGet('https://skullhub.xyz/loader.lua'))()
       iframe.allowFullscreen = true;
       document.getElementById('musicContainer').appendChild(iframe);
     }
-
     function hidePrompt() {
       document.getElementById('musicPrompt').style.display = 'none';
-      // Không tạo iframe => không có nhạc
     }
   </script>
-
 </body>
 </html>
