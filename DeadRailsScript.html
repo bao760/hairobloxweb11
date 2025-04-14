@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Script Dead Rails</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #1f1f1f;
+      color: white;
+    }
+    .script-box {
+      background-color: #2a2a2a;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .script-title {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #7bed9f;
+    }
+    .vip-text {
+      font-style: italic;
+      font-size: 16px;
+      display: inline;
+      color: #ffa502;
+    }
+    .script-code {
+      font-size: 16px;
+      background-color: #1e1e1e;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+      border: 1px solid #333;
+      margin-bottom: 10px;
+      white-space: pre-wrap;
+    }
+    .copy-btn {
+      padding: 8px 12px;
+      background-color: #3742fa;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .copy-btn:hover {
+      background-color: #5352ed;
+    }
+
+    .music-prompt {
+      background-color: #2a2a2a;
+      border: 2px solid #7bed9f;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .music-prompt h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+    .music-btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .music-on {
+      background-color: #2ed573;
+      border: 2px solid #1eae60;
+      color: black;
+    }
+    .music-off {
+      background-color: #ff4757;
+      border: 2px solid #e84118;
+      color: white;
+    }
+
+    /* Tạo khung cho Main Skull Script */
+    .main-skull-script {
+      background-color: #2a2a2a;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .main-skull-script-title {
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: #7bed9f;
+    }
+    .getkey-text {
+      font-style: italic;
+      font-size: 18px;
+      display: inline;
+      color: #ffa502;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hộp hỏi người dùng muốn bật nhạc hay không -->
+  <div id="musicPrompt" class="music-prompt">
+    <h2>Bạn muốn Bật nhạc chứ 🙃?</h2>
+    <div class="music-btn music-on" onclick="playMusic()">Tôi Muốn Hãy Bật🟢</div>
+    <div class="music-btn music-off" onclick="hidePrompt()">Tôi Không Thích Nhạc🔴</div>
+  </div>
+
+  <!-- iframe phát nhạc sẽ được tạo bằng JavaScript khi người chọn bật -->
+  <div id="musicContainer"></div>
+
+  <!-- Các Script -->
+  <h2>Script Dead Rails</h2>
+
+  <div class="script-box">
+    <div class="script-title">
+      Auto Win(<span class="vip-text">Vip</span>) 🟢⬇
+    </div>
+    <div class="script-code" id="script1">
+loadstring(game:HttpGet("https://raw.githubusercontent.com/gumanba/Scripts/main/DeadRails"))()
+    </div>
+    <button class="copy-btn" onclick="copyScript('script1')">📎 Sao chép</button>
+  </div>
+
+  <div class="script-box">
+    <div class="script-title">
+      Npc Lock Aim 🟢⬇
+    </div>
+    <div class="script-code" id="script2">
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Sonnek1203/chuotnekhub/refs/heads/main/Chu%E1%BB%99t%20npc%20lock%20hub"))()
+    </div>
+    <button class="copy-btn" onclick="copyScript('script2')">📎 Sao chép</button>
+  </div>
+
+  <!-- Thêm khung cho Main Skull Script -->
+  <div class="main-skull-script">
+    <div class="main-skull-script-title">
+      Main Skull Script🟢⬇(<span class="getkey-text">GetKey</span>)
+    </div>
+    <div class="script-code" id="script4">
+loadstring(game:HttpGet('https://skullhub.xyz/loader.lua'))()
+    </div>
+    <button class="copy-btn" onclick="copyScript('script4')">📎 Sao chép</button>
+  </div>
+
+  <script>
+    function copyScript(id) {
+      const script = document.getElementById(id).innerText.trim();
+      navigator.clipboard.writeText(script).then(() => {
+        alert("✅ Script đã được sao chép!");
+      }).catch(err => {
+        alert("❌ Lỗi khi sao chép: " + err);
+      });
+    }
+
+    function playMusic() {
+      document.getElementById('musicPrompt').style.display = 'none';
+      const iframe = document.createElement('iframe');
+      iframe.width = "0";
+      iframe.height = "0";
+      iframe.src = "https://www.youtube.com/embed/22BdMgNDRNg?autoplay=1&loop=1&playlist=22BdMgNDRNg&controls=0";
+      iframe.allow = "autoplay";
+      iframe.frameBorder = "0";
+      iframe.allowFullscreen = true;
+      document.getElementById('musicContainer').appendChild(iframe);
+    }
+
+    function hidePrompt() {
+      document.getElementById('musicPrompt').style.display = 'none';
+      // Không tạo iframe => không có nhạc
+    }
+  </script>
+
+</body>
+</html>
