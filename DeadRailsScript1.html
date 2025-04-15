@@ -348,6 +348,42 @@
       opacity: 0.8;
     }
 
+    /* View Counter Styles */
+    .view-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .view-btn {
+      padding: 10px 20px;
+      background-color: #ffd700;
+      color: black;
+      border: 2px solid #7bed9f;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      transition: opacity 0.3s;
+    }
+
+    .view-btn:hover {
+      opacity: 0.8;
+    }
+
+    .view-btn.disabled {
+      background-color: #555;
+      border-color: #444;
+      color: #888;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    .view-count {
+      font-size: 16px;
+      color: #7bed9f;
+      margin-left: 10px;
+    }
+
     /* Custom Title Styles for Redz and Xero */
     .hub-title {
       font-size: 22px;
@@ -389,6 +425,12 @@
   <!-- Nút Bỏ qua Nitro -->
   <div class="nitro-container" id="nitroContainer">
     <button class="nitro-btn" onclick="skipNitro()">Bỏ qua Nitro</button>
+  </div>
+
+  <!-- Bộ đếm View -->
+  <div class="view-container" id="viewContainer">
+    <button id="viewButton" class="view-btn" onclick="incrementView()">👁️ View</button>
+    <span id="viewCount" class="view-count">0</span>
   </div>
 
   <!-- Nút điều hướng game -->
@@ -510,6 +552,38 @@
       nitroContainer.style.display = 'none';
     }
 
+    function incrementView() {
+      if (localStorage.getItem('hasViewed')) {
+        alert("❌ Bạn đã xem rồi!");
+        return;
+      }
+      localStorage.setItem('hasViewed', 'true');
+      let viewCount = parseInt(localStorage.getItem('viewCount') || '0') + 1;
+      localStorage.setItem('viewCount', viewCount);
+      updateViewCounter(viewCount);
+      const viewButton = document.getElementById('viewButton');
+      viewButton.classList.add('disabled');
+      viewButton.disabled = true;
+      viewButton.innerText = '👁️ Đã Xem';
+      alert("✅ Đã ghi nhận lượt xem!");
+    }
+
+    function updateViewCounter(count) {
+      const viewCountElement = document.getElementById('viewCount');
+      viewCountElement.innerText = count;
+    }
+
+    function checkViewStatus() {
+      if (localStorage.getItem('hasViewed')) {
+        const viewButton = document.getElementById('viewButton');
+        viewButton.classList.add('disabled');
+        viewButton.disabled = true;
+        viewButton.innerText = '👁️ Đã Xem';
+      }
+      const viewCount = localStorage.getItem('viewCount') || '0';
+      updateViewCounter(viewCount);
+    }
+
     let themeIndex = 0;
     const themes = ['dark', 'light', 'rainbow'];
     const themeIcons = ['⚫ Dark', '🟡 Solar', '🔷 Rainbow'];
@@ -583,6 +657,11 @@
         nitroContainer.style.display = 'none';
       }
     }, 5000);
+
+    // Kiểm tra trạng thái view khi tải trang
+    window.onload = function() {
+      checkViewStatus();
+    };
 
     showPage('page1'); // Hiển thị trang đầu tiên khi tải
 
