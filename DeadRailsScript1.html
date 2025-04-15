@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Shadow Vertex Website</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://via.placeholder.com/32.png?text=Favicon">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -347,28 +349,6 @@
       box-shadow: 0 0 5px #00ffcc;
     }
 
-    /* Nitro Skip Button Styles */
-    .nitro-container {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .nitro-btn {
-      padding: 10px 20px;
-      background-color: #ffd700;
-      color: black;
-      border: 2px solid #7bed9f;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: bold;
-      transition: opacity 0.3s;
-    }
-
-    .nitro-btn:hover {
-      opacity: 0.8;
-    }
-
     /* View Counter Styles */
     .view-container {
       display: inline-block;
@@ -423,6 +403,21 @@
       text-shadow: 0 0 5px #000; /* Bóng đổ cho tiêu đề */
       color: #7bed9f; /* Màu xanh neon */
     }
+
+    /* Custom Title Styles for Sky Hub and OMG HUB */
+    .sky-hub-title {
+      font-size: 20px;
+      font-style: italic;
+    }
+
+    .omg-hub-title {
+      font-size: 20px;
+    }
+
+    .question-text {
+      font-style: italic;
+      font-size: 16px;
+    }
   </style>
 </head>
 <body>
@@ -453,16 +448,11 @@
     <input type="text" id="searchInput" class="search-input" placeholder="Tìm kiếm script hoặc game...">
   </div>
 
-  <!-- Nút Bỏ qua Nitro -->
-  <div class="nitro-container" id="nitroContainer">
-    <button class="nitro-btn" onclick="skipNitro()">Bỏ qua Nitro</button>
-  </div>
-
   <!-- Nút điều hướng game -->
   <div class="game-nav">
     <button class="game-btn bloxfruit-btn" onclick="showPage('page2')">BloxFruit</button>
     <button class="game-btn deadrails-btn" onclick="showPage('page1')">DeadRails</button>
-    <button class="game-btn clientmobi-btn" onclick="showPage('page3')">Client Mobi</button>
+    <button class="game-btn clientmobi-btn" onclick="showPage('page3')">Arise Crossover</button>
   </div>
 
   <!-- Nhạc mở đầu -->
@@ -530,14 +520,30 @@
     </div>
   </div>
 
-  <!-- Trang 3: Client Mobi -->
+  <!-- Trang 3: Arise Crossover -->
   <div id="page3" class="hidden">
-    <h2>Script Client Mobi</h2>
+    <h2>Script Arise Crossover</h2>
 
     <div class="script-box">
-      <div class="script-title">Client Mobi Script 🟢⬇</div>
+      <div class="script-title">Arise Crossover Script 🟢⬇</div>
       <div class="script-code" id="script7">loadstring(game:HttpGet("https://example.com/clientmobi.lua"))()</div>
       <button class="copy-btn" onclick="copyScript('script7')">📎 Sao chép</button>
+    </div>
+
+    <div class="script-box">
+      <div class="script-title">
+        <span class="sky-hub-title">Sky Hub</span> (<span class="vip-text">Vip</span>) 🟢⬇
+      </div>
+      <div class="script-code" id="script10">loadstring(game:HttpGet("https://raw.githubusercontent.com/SKOIXLL/SKYLOLAND/refs/heads/main/Load.lua"))()</div>
+      <button class="copy-btn" onclick="copyScript('script10')">📎 Sao chép</button>
+    </div>
+
+    <div class="script-box">
+      <div class="script-title">
+        <span class="omg-hub-title">OMG HUB</span> (<span class="question-text">???</span>) 🟢⬇
+      </div>
+      <div class="script-code" id="script11">loadstring(game:HttpGet("https://raw.githubusercontent.com/Omgshit/Scripts/main/MainLoader.lua"))()</div>
+      <button class="copy-btn" onclick="copyScript('script11')">📎 Sao chép</button>
     </div>
   </div>
 
@@ -570,11 +576,6 @@
 
     function hidePrompt() {
       document.getElementById('musicPrompt').style.display = 'none';
-    }
-
-    function skipNitro() {
-      const nitroContainer = document.getElementById('nitroContainer');
-      nitroContainer.style.display = 'none';
     }
 
     function incrementView() {
@@ -677,14 +678,6 @@
 
     // Lắng nghe sự kiện nhập liệu
     document.getElementById('searchInput').addEventListener('input', searchScripts);
-
-    // Tự động ẩn nút Nitro sau 5 giây
-    setTimeout(() => {
-      const nitroContainer = document.getElementById('nitroContainer');
-      if (nitroContainer) {
-        nitroContainer.style.display = 'none';
-      }
-    }, 5000);
 
     // Kiểm tra trạng thái view khi tải trang
     window.onload = function() {
