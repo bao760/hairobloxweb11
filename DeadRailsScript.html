@@ -2,12 +2,12 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Shadow Vertex Web</title>
+  <title>Script Hub</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       padding: 30px;
-      background-color: #1f1f1f;
+      background-color: #1f1f1f; /* Màu đen mặc định cho theme Dark */
       color: white;
       transition: background-color 0.3s, color 0.3s;
       overflow-x: hidden;
@@ -15,7 +15,7 @@
     }
 
     .script-box {
-      background-color: #2a2a2a;
+      background-color: #1f1f1f; /* Màu đen */
       border: 1px solid #444;
       border-radius: 8px;
       padding: 20px;
@@ -25,10 +25,11 @@
     .script-title {
       font-size: 18px;
       margin-bottom: 10px;
-      color: #7bed9f;
+      color: #7bed9f; /* Màu xanh neon sáng */
       display: inline-block;
       position: relative;
       animation: floatText 5s ease-in-out infinite alternate;
+      text-shadow: 0 0 5px #000; /* Bóng đổ để dễ đọc */
     }
 
     .vip-text {
@@ -46,6 +47,7 @@
       border: 1px solid #333;
       margin-bottom: 10px;
       white-space: pre-wrap;
+      color: white; /* Chữ trắng để nổi trên nền đen */
     }
 
     .copy-btn {
@@ -63,7 +65,7 @@
     }
 
     .music-prompt {
-      background-color: #2a2a2a;
+      background-color: #1f1f1f; /* Màu đen */
       border: 2px solid #7bed9f;
       padding: 20px;
       border-radius: 12px;
@@ -93,20 +95,37 @@
       color: white;
     }
 
-    .light-mode {
-      background-color: #f1f2f6;
-      color: black;
+    .solar-mode {
+      background-color: #ffffff; /* Màu trắng hoàn toàn cho Solar mode */
+      color: #000000; /* Chữ đen cho các phần ngoài khung */
     }
 
-    .light-mode .script-box {
-      background-color: #ffffff;
-      border: 1px solid #ccc;
+    .solar-mode .script-box {
+      background-color: #1f1f1f; /* Khung đen */
+      border: 1px solid #000000; /* Viền đen */
+      color: #ffffff; /* Chữ trắng bên trong khung */
     }
 
-    .light-mode .script-code {
-      background-color: #f1f2f6;
-      color: black;
-      border: 1px solid #ccc;
+    .solar-mode .script-code {
+      background-color: #1e1e1e;
+      color: #ffffff; /* Chữ trắng */
+      border: 1px solid #000000; /* Viền đen */
+    }
+
+    .solar-mode .music-prompt {
+      background-color: #1f1f1f; /* Khung đen */
+      border: 2px solid #000000; /* Viền đen */
+      color: #ffffff; /* Chữ trắng bên trong khung */
+    }
+
+    .solar-mode .search-input {
+      background-color: #1f1f1f; /* Khung đen */
+      color: #ffffff; /* Chữ trắng */
+      border: 2px solid #000000; /* Viền đen */
+    }
+
+    .solar-mode .search-input::placeholder {
+      color: #888;
     }
 
     .rainbow-mode {
@@ -140,7 +159,9 @@
     }
 
     .top-bar {
-      text-align: right;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       margin-bottom: 20px;
     }
 
@@ -311,8 +332,8 @@
       max-width: 80%;
       border: 2px solid #7bed9f;
       border-radius: 5px;
-      background-color: #2a2a2a;
-      color: white;
+      background-color: #1f1f1f; /* Màu đen */
+      color: white; /* Chữ trắng */
       font-size: 16px;
     }
 
@@ -350,18 +371,17 @@
 
     /* View Counter Styles */
     .view-container {
-      text-align: center;
-      margin-bottom: 20px;
+      display: inline-block;
     }
 
     .view-btn {
-      padding: 10px 20px;
+      padding: 8px 16px;
       background-color: #ffd700;
       color: black;
       border: 2px solid #7bed9f;
       border-radius: 5px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: bold;
       transition: opacity 0.3s;
     }
@@ -379,22 +399,29 @@
     }
 
     .view-count {
-      font-size: 16px;
-      color: #7bed9f;
-      margin-left: 10px;
+      font-size: 14px;
+      color: #7bed9f; /* Màu xanh neon */
+      margin-left: 8px;
+      text-shadow: 0 0 5px #000;
     }
 
     /* Custom Title Styles for Redz and Xero */
     .hub-title {
       font-size: 22px;
       font-weight: bold;
-      color: #7bed9f;
+      color: #7bed9f; /* Màu xanh neon */
     }
 
     .hub-vip {
       font-size: 16px;
       font-style: italic;
       color: #ffa502;
+    }
+
+    /* General Heading Styles */
+    h2 {
+      text-shadow: 0 0 5px #000; /* Bóng đổ cho tiêu đề */
+      color: #7bed9f; /* Màu xanh neon */
     }
   </style>
 </head>
@@ -412,8 +439,12 @@
     <div class="fire"></div>
   </div>
 
-  <!-- Nút đổi theme -->
+  <!-- Nút đổi theme và bộ đếm View -->
   <div class="top-bar">
+    <div class="view-container" id="viewContainer">
+      <button id="viewButton" class="view-btn" onclick="incrementView()">👁️ View</button>
+      <span id="viewCount" class="view-count">0</span>
+    </div>
     <button id="themeSwitcher" class="copy-btn" onclick="cycleTheme()">⚫ Dark</button>
   </div>
 
@@ -425,12 +456,6 @@
   <!-- Nút Bỏ qua Nitro -->
   <div class="nitro-container" id="nitroContainer">
     <button class="nitro-btn" onclick="skipNitro()">Bỏ qua Nitro</button>
-  </div>
-
-  <!-- Bộ đếm View -->
-  <div class="view-container" id="viewContainer">
-    <button id="viewButton" class="view-btn" onclick="incrementView()">👁️ View</button>
-    <span id="viewCount" class="view-count">0</span>
   </div>
 
   <!-- Nút điều hướng game -->
@@ -585,19 +610,22 @@
     }
 
     let themeIndex = 0;
-    const themes = ['dark', 'light', 'rainbow'];
+    const themes = ['dark', 'solar', 'rainbow'];
     const themeIcons = ['⚫ Dark', '🟡 Solar', '🔷 Rainbow'];
 
     function cycleTheme() {
       themeIndex = (themeIndex + 1) % themes.length;
       const mode = themes[themeIndex];
       const body = document.body;
-      body.classList.remove('light-mode', 'rainbow-mode');
+      body.classList.remove('solar-mode', 'rainbow-mode');
+      body.style.backgroundImage = 'none'; // Xóa hình nền mặc định
 
-      if (mode === 'light') {
-        body.classList.add('light-mode');
+      if (mode === 'solar') {
+        body.classList.add('solar-mode');
       } else if (mode === 'rainbow') {
         body.classList.add('rainbow-mode');
+      } else {
+        body.style.backgroundColor = '#1f1f1f'; // Đảm bảo theme Dark là màu đen
       }
       document.getElementById('themeSwitcher').innerText = themeIcons[themeIndex];
     }
