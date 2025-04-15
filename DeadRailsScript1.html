@@ -298,6 +298,55 @@
       50% { transform: scale(1.6); opacity: 1; }
       100% { transform: scale(1); opacity: 0.7; }
     }
+
+    /* Search Bar Styles */
+    .search-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .search-input {
+      padding: 10px;
+      width: 300px;
+      max-width: 80%;
+      border: 2px solid #7bed9f;
+      border-radius: 5px;
+      background-color: #2a2a2a;
+      color: white;
+      font-size: 16px;
+    }
+
+    .search-input::placeholder {
+      color: #888;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: #00ffcc;
+      box-shadow: 0 0 5px #00ffcc;
+    }
+
+    /* Nitro Skip Button Styles */
+    .nitro-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .nitro-btn {
+      padding: 10px 20px;
+      background-color: #ffd700;
+      color: black;
+      border: 2px solid #7bed9f;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      transition: opacity 0.3s;
+    }
+
+    .nitro-btn:hover {
+      opacity: 0.8;
+    }
   </style>
 </head>
 <body>
@@ -317,6 +366,16 @@
   <!-- Nút đổi theme -->
   <div class="top-bar">
     <button id="themeSwitcher" class="copy-btn" onclick="cycleTheme()">⚫ Dark</button>
+  </div>
+
+  <!-- Thanh tìm kiếm -->
+  <div class="search-container">
+    <input type="text" id="searchInput" class="search-input" placeholder="Tìm kiếm script hoặc game...">
+  </div>
+
+  <!-- Nút Bỏ qua Nitro -->
+  <div class="nitro-container" id="nitroContainer">
+    <button class="nitro-btn" onclick="skipNitro()">Bỏ qua Nitro</button>
   </div>
 
   <!-- Nút điều hướng game -->
@@ -417,6 +476,11 @@
       document.getElementById('musicPrompt').style.display = 'none';
     }
 
+    function skipNitro() {
+      const nitroContainer = document.getElementById('nitroContainer');
+      nitroContainer.style.display = 'none';
+    }
+
     let themeIndex = 0;
     const themes = ['dark', 'light', 'rainbow'];
     const themeIcons = ['⚫ Dark', '🟡 Solar', '🔷 Rainbow'];
@@ -455,6 +519,41 @@
       currentPage = currentPage === 1 ? totalPages : currentPage - 1;
       showPage('page' + currentPage);
     }
+
+    // Chức năng tìm kiếm
+    function searchScripts() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const pages = [document.getElementById('page1'), document.getElementById('page2'), document.getElementById('page3')];
+      
+      pages.forEach(page => {
+        const title = page.querySelector('h2').textContent.toLowerCase();
+        const scripts = page.querySelectorAll('.script-box');
+        let pageVisible = false;
+
+        scripts.forEach(script => {
+          const scriptTitle = script.querySelector('.script-title').textContent.toLowerCase();
+          if (scriptTitle.includes(query) || title.includes(query)) {
+            script.style.display = 'block';
+            pageVisible = true;
+          } else {
+            script.style.display = 'none';
+          }
+        });
+
+        page.style.display = pageVisible ? 'block' : 'none';
+      });
+    }
+
+    // Lắng nghe sự kiện nhập liệu
+    document.getElementById('searchInput').addEventListener('input', searchScripts);
+
+    // Tự động ẩn nút Nitro sau 5 giây
+    setTimeout(() => {
+      const nitroContainer = document.getElementById('nitroContainer');
+      if (nitroContainer) {
+        nitroContainer.style.display = 'none';
+      }
+    }, 5000);
 
     showPage('page1'); // Hiển thị trang đầu tiên khi tải
 
