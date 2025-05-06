@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>SDVT Key - Auto Generate Once</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      background-color: #f0f0f0;
+    }
+    #key {
+      margin-top: 20px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SDVT_EXECUTOR_KEY</h1>
+  <div id="key"></div>
+
+  <script>
+    (function generateKeyOnce() {
+      const length = 12;
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let randomPart = '';
+      for (let i = 0; i < length; i++) {
+        randomPart += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      const finalKey = 'SDVT_EXECUTOR_KEY' + randomPart;
+      document.getElementById('key').textContent = finalKey;
+    })();
+  </script>
+
+</body>
+</html>
