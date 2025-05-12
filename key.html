@@ -1,40 +1,91 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>SDVT Key - Auto Generate Once</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin-top: 100px;
-      background-color: #f0f0f0;
-    }
-    #key {
-      margin-top: 20px;
-      font-size: 22px;
-      font-weight: bold;
-      color: #2c3e50;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VLXX - Trang Web</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        section {
+            padding: 20px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .hidden {
+            display: none;
+        }
+        iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+    </style>
+    <script>
+        function showVLXX() {
+            // Ẩn nội dung ban đầu và chỉ hiển thị iframe chứa trang vlxx.my
+            document.getElementById("content").classList.add("hidden");
+            document.getElementById("vlxxFrame").classList.remove("hidden");
+        }
+
+        function goToYouTube() {
+            // Chuyển hướng đến YouTube khi nhấn nút Reset
+            window.location.href = "https://www.youtube.com/";
+        }
+    </script>
 </head>
 <body>
 
-  <h1>SDVT_EXECUTOR_KEY</h1>
-  <div id="key"></div>
+    <header>
+        <h1>VLXX - Trang Web Chính Thức</h1>
+    </header>
 
-  <script>
-    (function generateKeyOnce() {
-      const length = 12;
-      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      let randomPart = '';
-      for (let i = 0; i < length; i++) {
-        randomPart += chars.charAt(Math.floor(Math.random() * chars.length));
-      }
-      const finalKey = 'SDVT_EXECUTOR_KEY' + randomPart;
-      document.getElementById('key').textContent = finalKey;
-    })();
-  </script>
+    <section id="content">
+        <h2>Chào Mừng Bạn Đến Với VLXX!</h2>
+        <p>Đây là trang web chuyên về VLXX. Chúng tôi cung cấp các thông tin hữu ích về chủ đề này.</p>
+        <!-- Nút để hiển thị màn hình vlxx.my -->
+        <button onclick="showVLXX()">TP to VLXX</button>
+    </section>
+
+    <!-- Màn hình iframe sẽ hiển thị trang vlxx.my -->
+    <section id="vlxxFrame" class="hidden">
+        <iframe src="http://vlxx.my" onerror="alert('Có lỗi xảy ra khi tải trang. Bạn có thể thử lại sau.')"></iframe>
+        <button onclick="goToYouTube()">Reset và đi đến YouTube</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 VLXX. Tất cả quyền được bảo vệ.</p>
+    </footer>
 
 </body>
 </html>
