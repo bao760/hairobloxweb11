@@ -1,0 +1,977 @@
+```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chọn phân tích bài thơ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .selector-container {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            backdrop-filter: blur(10px);
+        }
+        
+        .selector-container h1 {
+            color: #764ba2;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .option-btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            margin: 15px 0;
+            border: none;
+            border-radius: 16px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .option-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(102, 126, 234, 0.6);
+        }
+        
+        .option-btn:active {
+            transform: translateY(0);
+        }
+        
+        .option-1:hover {
+            background: linear-gradient(90deg, #ff6b6b 0%, #ee5a52 100%);
+        }
+        
+        .option-2:hover {
+            background: linear-gradient(90deg, #4ecdc4 0%, #44a08d 100%);
+        }
+        
+        .content-container {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+        
+        @media (max-width: 480px) {
+            .selector-container {
+                padding: 30px 20px;
+            }
+            
+            .selector-container h1 {
+                font-size: 24px;
+            }
+            
+            .option-btn {
+                padding: 15px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="selector" class="selector-container">
+        <h1>Chọn bài phân tích bạn muốn xem</h1>
+        <button class="option-btn option-1" onclick="showContent(1)">Bài 1: Trong lời mẹ hát</button>
+        <button class="option-btn option-2" onclick="showContent(2)">Bài 2: Nhớ đồng (Tố Hữu)</button>
+    </div>
+
+    <div id="content1" class="content-container">
+        <!DOCTYPE html>
+        <html lang="vi">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Phân tích đoạn thơ - Trong lời mẹ hát</title>
+            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+            <style>
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                }
+                body {
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    background: linear-gradient(135deg, #1a2a6c 0%, #b21f1f 0%, #1a2a6c 100%);
+                    color: #333;
+                    line-height: 1.6;
+                    min-height: 100vh;
+                    overflow-x: hidden;
+                    position: relative;
+                }
+                
+                /* Animated background elements */
+                .floating {
+                    position: absolute;
+                    opacity: 0.1;
+                    z-index: 0;
+                }
+                
+                .heart {
+                    width: 20px;
+                    height: 20px;
+                    background: #ff6b6b;
+                    clip-path: path('M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z');
+                    animation: float 15s infinite ease-in-out;
+                }
+                
+                .star {
+                    width: 12px;
+                    height: 12px;
+                    background: #4ecdc4;
+                    border-radius: 50%;
+                    animation: twinkle 8s infinite ease-in-out;
+                }
+                
+                @keyframes float {
+                    0%, 100% { transform: translateY(0px) rotate(0deg); }
+                    50% { transform: translateY(-30px) rotate(180deg); }
+                }
+                
+                @keyframes twinkle {
+                    0%, 100% { opacity: 0.1; transform: scale(1); }
+                    50% { opacity: 0.8; transform: scale(1.5); }
+                }
+                
+                .container {
+                    max-width: 900px;
+                    margin: 0 auto;
+                    position: relative;
+                    z-index: 2;
+                    padding: 40px 20px;
+                }
+                
+                .card {
+                    background: rgba(255, 255, 255, 0.95);
+                    backdrop-filter: blur(10px);
+                    border-radius: 24px;
+                    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+                    overflow: hidden;
+                    transform: translateY(100px);
+                    opacity: 0;
+                    animation: slideUp 1s ease-out forwards;
+                }
+                
+                @keyframes slideUp {
+                    to {
+                        transform: translateY(0);
+                        opacity: 1;
+                    }
+                }
+                
+                header {
+                    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    padding: 40px 30px;
+                    text-align: center;
+                    position: relative;
+                    overflow: hidden;
+                }
+                
+                header::before {
+                    content: '';
+                    position: absolute;
+                    top: -50%;
+                    left: -50%;
+                    width: 200%;
+                    height: 200%;
+                    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+                    animation: rotate 20s linear infinite;
+                }
+                
+                @keyframes rotate {
+                    from { transform: rotate(0deg); }
+                    to { transform: rotate(360deg); }
+                }
+                
+                header h1 {
+                    font-size: 32px;
+                    margin-bottom: 15px;
+                    font-weight: 800;
+                    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+                    position: relative;
+                    z-index: 2;
+                }
+                
+                header p {
+                    opacity: 0.95;
+                    font-size: 18px;
+                    position: relative;
+                    z-index: 2;
+                }
+                
+                .content {
+                    padding: 40px;
+                }
+                
+                .poem {
+                    text-align: center;
+                    font-style: italic;
+                    margin: 30px 0;
+                    padding: 25px;
+                    background: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%);
+                    border-radius: 16px;
+                    border: 2px solid #e0e7ff;
+                    position: relative;
+                    overflow: hidden;
+                    transform: scale(0.9);
+                    opacity: 0;
+                    animation: poemAppear 1.5s ease-out 0.5s forwards;
+                }
+                
+                @keyframes poemAppear {
+                    to {
+                        transform: scale(1);
+                        opacity: 1;
+                    }
+                }
+                
+                .poem::before {
+                    content: '"';
+                    position: absolute;
+                    top: 10px;
+                    left: 10px;
+                    font-size: 40px;
+                    color: #764ba2;
+                    opacity: 0.3;
+                }
+                
+                .poem::after {
+                    content: '"';
+                    position: absolute;
+                    bottom: 10px;
+                    right: 10px;
+                    font-size: 40px;
+                    color: #764ba2;
+                    opacity: 0.3;
+                }
+                
+                .poem-line {
+                    margin: 12px 0;
+                    font-size: 20px;
+                    font-weight: 500;
+                    color: #2d3748;
+                    opacity: 0;
+                    animation: fadeInUp 0.8s ease-out forwards;
+                }
+                
+                .poem-line:nth-child(1) { animation-delay: 0.8s; }
+                .poem-line:nth-child(2) { animation-delay: 1s; }
+                .poem-line:nth-child(3) { animation-delay: 1.2s; }
+                .poem-line:nth-child(4) { animation-delay: 1.4s; }
+                
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                
+                .question {
+                    margin-bottom: 35px;
+                    padding-bottom: 25px;
+                    border-bottom: 2px solid #f0f4ff;
+                    opacity: 0;
+                    transform: translateX(-50px);
+                    animation: slideInRight 0.8s ease-out forwards;
+                }
+                
+                .question:nth-child(2) { animation-delay: 1.8s; }
+                .question:nth-child(3) { animation-delay: 2.2s; }
+                .question:nth-child(4) { animation-delay: 2.6s; border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+                
+                @keyframes slideInRight {
+                    to {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
+                
+                .question h2 {
+                    color: #764ba2;
+                    margin-bottom: 20px;
+                    font-size: 22px;
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                }
+                
+                .question h2::before {
+                    content: "•";
+                    color: #667eea;
+                    font-size: 28px;
+                    font-weight: bold;
+                }
+                
+                .answer {
+                    padding-left: 20px;
+                    font-size: 17px;
+                    color: #4a5568;
+                    line-height: 1.7;
+                }
+                
+                .answer.highlight {
+                    background: linear-gradient(135deg, #f0f7ff 0%, #e6f0ff 100%);
+                    padding: 20px;
+                    border-left: 4px solid #667eea;
+                    border-radius: 0 12px 12px 0;
+                    margin-top: 15px;
+                    position: relative;
+                    overflow: hidden;
+                }
+                
+                .answer.highlight::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(90deg, transparent 0%, rgba(102, 126, 234, 0.1) 50%, transparent 100%);
+                    animation: shine 3s infinite;
+                }
+                
+                @keyframes shine {
+                    0% { transform: translateX(-100%); }
+                    100% { transform: translateX(100%); }
+                }
+                
+                .key-point {
+                    color: #764ba2;
+                    font-weight: 700;
+                    background: linear-gradient(90deg, #764ba2, #667eea);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                }
+                
+                ul {
+                    margin-left: 20px;
+                    margin-top: 10px;
+                }
+                
+                li {
+                    margin: 8px 0;
+                    position: relative;
+                }
+                
+                li::before {
+                    content: '✓';
+                    color: #667eea;
+                    font-weight: bold;
+                    position: absolute;
+                    left: -20px;
+                }
+                
+                /* Responsive design */
+                @media (max-width: 768px) {
+                    .content {
+                        padding: 25px;
+                    }
+                    header h1 {
+                        font-size: 26px;
+                    }
+                    header p {
+                        font-size: 16px;
+                    }
+                    .poem-line {
+                        font-size: 18px;
+                    }
+                    .question h2 {
+                        font-size: 20px;
+                    }
+                }
+                
+                @media (max-width: 480px) {
+                    .container {
+                        padding: 20px 10px;
+                    }
+                    .content {
+                        padding: 20px;
+                    }
+                    header {
+                        padding: 30px 20px;
+                    }
+                    header h1 {
+                        font-size: 22px;
+                    }
+                    .poem {
+                        padding: 20px 15px;
+                    }
+                    .poem-line {
+                        font-size: 16px;
+                        margin: 8px 0;
+                    }
+                }
+            </style>
+        </head>
+        <body>
+            <!-- Animated background elements -->
+            <div class="floating heart" style="top: 10%; left: 5%; animation-delay: 0s;"></div>
+            <div class="floating star" style="top: 20%; left: 15%; animation-delay: 2s;"></div>
+            <div class="floating heart" style="top: 30%; left: 85%; animation-delay: 4s;"></div>
+            <div class="floating star" style="top: 40%; left: 80%; animation-delay: 1s;"></div>
+            <div class="floating heart" style="top: 60%; left: 10%; animation-delay: 3s;"></div>
+            <div class="floating star" style="top: 70%; left: 90%; animation-delay: 5s;"></div>
+            <div class="floating heart" style="top: 80%; left: 75%; animation-delay: 2s;"></div>
+            <div class="floating star" style="top: 90%; left: 25%; animation-delay: 4s;"></div>
+
+            <div class="container">
+                <div class="card">
+                    <header>
+                        <h1>Phân tích đoạn thơ: "Trong lời mẹ hát"</h1>
+                        <p>Tác giả: Trương Nam Hương | Ngữ văn lớp 8 - Chân trời sáng tạo</p>
+                    </header>
+                    
+                    <div class="content">
+                        <div class="poem">
+                            <div class="poem-line">Thời gian chạy qua tóc mẹ</div>
+                            <div class="poem-line">Một màu trắng đến nôn nao</div>
+                            <div class="poem-line">Lưng mẹ cứ còng dần xuống</div>
+                            <div class="poem-line">Cho con ngày một thêm cao</div>
+                        </div>
+
+                        <div class="question">
+                            <h2>Câu 1: Thể thơ</h2>
+                            <div class="answer">
+                                Đoạn thơ được viết theo <span class="key-point">thể thơ 6 chữ</span>, vì mỗi dòng thơ đều có <span class="key-point">6 chữ</span>.
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <h2>Câu 2: Yếu tố nghệ thuật</h2>
+                            <div class="answer">
+                                <p><strong>a) Vần và nhịp:</strong></p>
+                                <ul>
+                                    <li><span class="key-point">Vần cách:</span> "nao" – "cao"</li>
+                                    <li><span class="key-point">Nhịp thơ:</span> 2/2/2 và 3/3</li>
+                                </ul>
+                                
+                                <p style="margin-top: 15px;"><strong>b) Biện pháp tu từ:</strong></p>
+                                <div class="answer highlight">
+                                    <span class="key-point">Biện pháp tương phản</span> giữa "lưng mẹ còng dần xuống" và "con ngày một thêm cao" giúp người con bày tỏ lòng biết ơn sâu sắc trước sự vất vả và hy sinh thầm lặng của mẹ dành cho con.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <h2>Câu 3: Nội dung và thông điệp</h2>
+                            <div class="answer">
+                                <p><strong>Nội dung:</strong> Tình mẫu tử thiêng liêng, sâu sắc và sự biết ơn, tri ân của người con dành cho công ơn hy sinh thầm lặng của mẹ, đồng thời còn là lời giáo dục về lòng hiếu thảo và sự trân trọng tình cảm gia đình, đặc biệt là tình yêu thương từ mẹ.</p>
+                                
+                                <p style="margin-top: 15px;"><strong>Thông điệp:</strong></p>
+                                <div class="answer highlight">
+                                    Thông điệp mà nhà thơ Trương Nam Hương gửi gắm là: <span class="key-point">Hãy luôn yêu thương, trân trọng mẹ, biết ơn và báo hiếu công lao sinh thành, dưỡng dục của cha mẹ, vì những hy sinh ấy là vô giá và không bao giờ là quá muộn để thể hiện sự biết ơn.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                // Add more floating elements dynamically
+                document.addEventListener('DOMContentLoaded', function() {
+                    const body = document.body;
+                    const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57'];
+                    
+                    for (let i = 0; i < 15; i++) {
+                        const element = document.createElement('div');
+                        element.className = 'floating';
+                        element.style.top = Math.random() * 100 + '%';
+                        element.style.left = Math.random() * 100 + '%';
+                        element.style.animationDelay = Math.random() * 10 + 's';
+                        
+                        if (Math.random() > 0.5) {
+                            // Heart
+                            element.classList.add('heart');
+                            element.style.width = (10 + Math.random() * 20) + 'px';
+                            element.style.height = (10 + Math.random() * 20) + 'px';
+                        } else {
+                            // Star
+                            element.classList.add('star');
+                            element.style.width = (8 + Math.random() * 12) + 'px';
+                            element.style.height = (8 + Math.random() * 12) + 'px';
+                        }
+                        
+                        body.appendChild(element);
+                    }
+                });
+            </script>
+        </body>
+        </html>
+    </div>
+
+    <div id="content2" class="content-container">
+        <!DOCTYPE html>
+        <html lang="vi">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Phân tích bài thơ - Nhớ đồng</title>
+            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+            <style>
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                }
+                body {
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%);
+                    color: #333;
+                    line-height: 1.6;
+                    min-height: 100vh;
+                    overflow-x: hidden;
+                    position: relative;
+                }
+                
+                /* Animated background elements */
+                .floating {
+                    position: absolute;
+                    opacity: 0.15;
+                    z-index: 0;
+                }
+                
+                .bird {
+                    width: 18px;
+                    height: 12px;
+                    background: #f39c12;
+                    clip-path: polygon(0 50%, 100% 25%, 100% 75%);
+                    animation: fly 20s infinite linear;
+                }
+                
+                .leaf {
+                    width: 14px;
+                    height: 14px;
+                    background: #27ae60;
+                    border-radius: 50% 0 50% 50%;
+                    animation: float 12s infinite ease-in-out;
+                }
+                
+                @keyframes fly {
+                    0% { transform: translateX(-100px) translateY(0px) rotate(0deg); }
+                    25% { transform: translateX(200px) translateY(-50px) rotate(10deg); }
+                    50% { transform: translateX(400px) translateY(30px) rotate(-5deg); }
+                    75% { transform: translateX(600px) translateY(-20px) rotate(15deg); }
+                    100% { transform: translateX(900px) translateY(0px) rotate(0deg); }
+                }
+                
+                @keyframes float {
+                    0%, 100% { transform: translateY(0px) rotate(0deg); }
+                    50% { transform: translateY(-25px) rotate(180deg); }
+                }
+                
+                .container {
+                    max-width: 900px;
+                    margin: 0 auto;
+                    position: relative;
+                    z-index: 2;
+                    padding: 40px 20px;
+                }
+                
+                .card {
+                    background: rgba(255, 255, 255, 0.95);
+                    backdrop-filter: blur(10px);
+                    border-radius: 24px;
+                    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+                    overflow: hidden;
+                    transform: translateY(100px);
+                    opacity: 0;
+                    animation: slideUp 1s ease-out forwards;
+                }
+                
+                @keyframes slideUp {
+                    to {
+                        transform: translateY(0);
+                        opacity: 1;
+                    }
+                }
+                
+                header {
+                    background: linear-gradient(90deg, #e74c3c 0%, #c0392b 100%);
+                    color: white;
+                    padding: 40px 30px;
+                    text-align: center;
+                    position: relative;
+                    overflow: hidden;
+                }
+                
+                header::before {
+                    content: '';
+                    position: absolute;
+                    top: -50%;
+                    left: -50%;
+                    width: 200%;
+                    height: 200%;
+                    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+                    animation: rotate 25s linear infinite;
+                }
+                
+                @keyframes rotate {
+                    from { transform: rotate(0deg); }
+                    to { transform: rotate(360deg); }
+                }
+                
+                header h1 {
+                    font-size: 32px;
+                    margin-bottom: 15px;
+                    font-weight: 800;
+                    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+                    position: relative;
+                    z-index: 2;
+                }
+                
+                header p {
+                    opacity: 0.95;
+                    font-size: 18px;
+                    position: relative;
+                    z-index: 2;
+                }
+                
+                .content {
+                    padding: 40px;
+                }
+                
+                .poem {
+                    text-align: center;
+                    font-style: italic;
+                    margin: 30px 0;
+                    padding: 25px;
+                    background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+                    border-radius: 16px;
+                    border: 2px solid #ffe082;
+                    position: relative;
+                    overflow: hidden;
+                    transform: scale(0.9);
+                    opacity: 0;
+                    animation: poemAppear 1.5s ease-out 0.5s forwards;
+                }
+                
+                @keyframes poemAppear {
+                    to {
+                        transform: scale(1);
+                        opacity: 1;
+                    }
+                }
+                
+                .poem::before {
+                    content: '"';
+                    position: absolute;
+                    top: 10px;
+                    left: 10px;
+                    font-size: 40px;
+                    color: #c0392b;
+                    opacity: 0.3;
+                }
+                
+                .poem::after {
+                    content: '"';
+                    position: absolute;
+                    bottom: 10px;
+                    right: 10px;
+                    font-size: 40px;
+                    color: #c0392b;
+                    opacity: 0.3;
+                }
+                
+                .poem-line {
+                    margin: 12px 0;
+                    font-size: 20px;
+                    font-weight: 500;
+                    color: #2c3e50;
+                    opacity: 0;
+                    animation: fadeInUp 0.8s ease-out forwards;
+                }
+                
+                .poem-line:nth-child(1) { animation-delay: 0.8s; }
+                .poem-line:nth-child(2) { animation-delay: 1s; }
+                .poem-line:nth-child(3) { animation-delay: 1.2s; }
+                .poem-line:nth-child(4) { animation-delay: 1.4s; }
+                
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                
+                .question {
+                    margin-bottom: 35px;
+                    padding-bottom: 25px;
+                    border-bottom: 2px solid #ffe0cc;
+                    opacity: 0;
+                    transform: translateX(-50px);
+                    animation: slideInRight 0.8s ease-out forwards;
+                }
+                
+                .question:nth-child(2) { animation-delay: 1.8s; }
+                .question:nth-child(3) { animation-delay: 2.2s; }
+                .question:nth-child(4) { animation-delay: 2.6s; border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+                
+                @keyframes slideInRight {
+                    to {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
+                
+                .question h2 {
+                    color: #c0392b;
+                    margin-bottom: 20px;
+                    font-size: 22px;
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                }
+                
+                .question h2::before {
+                    content: "•";
+                    color: #e74c3c;
+                    font-size: 28px;
+                    font-weight: bold;
+                }
+                
+                .answer {
+                    padding-left: 20px;
+                    font-size: 17px;
+                    color: #2c3e50;
+                    line-height: 1.7;
+                }
+                
+                .answer.highlight {
+                    background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+                    padding: 20px;
+                    border-left: 4px solid #e74c3c;
+                    border-radius: 0 12px 12px 0;
+                    margin-top: 15px;
+                    position: relative;
+                    overflow: hidden;
+                }
+                
+                .answer.highlight::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(90deg, transparent 0%, rgba(231, 76, 60, 0.1) 50%, transparent 100%);
+                    animation: shine 3s infinite;
+                }
+                
+                @keyframes shine {
+                    0% { transform: translateX(-100%); }
+                    100% { transform: translateX(100%); }
+                }
+                
+                .key-point {
+                    color: #c0392b;
+                    font-weight: 700;
+                    background: linear-gradient(90deg, #c0392b, #e74c3c);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                }
+                
+                ul {
+                    margin-left: 20px;
+                    margin-top: 10px;
+                }
+                
+                li {
+                    margin: 8px 0;
+                    position: relative;
+                }
+                
+                li::before {
+                    content: '✓';
+                    color: #e74c3c;
+                    font-weight: bold;
+                    position: absolute;
+                    left: -20px;
+                }
+                
+                /* Responsive design */
+                @media (max-width: 768px) {
+                    .content {
+                        padding: 25px;
+                    }
+                    header h1 {
+                        font-size: 26px;
+                    }
+                    header p {
+                        font-size: 16px;
+                    }
+                    .poem-line {
+                        font-size: 18px;
+                    }
+                    .question h2 {
+                        font-size: 20px;
+                    }
+                }
+                
+                @media (max-width: 480px) {
+                    .container {
+                        padding: 20px 10px;
+                    }
+                    .content {
+                        padding: 20px;
+                    }
+                    header {
+                        padding: 30px 20px;
+                    }
+                    header h1 {
+                        font-size: 22px;
+                    }
+                    .poem {
+                        padding: 20px 15px;
+                    }
+                    .poem-line {
+                        font-size: 16px;
+                        margin: 8px 0;
+                    }
+                }
+            </style>
+        </head>
+        <body>
+            <!-- Animated background elements -->
+            <div class="floating bird" style="top: 15%; left: -50px; animation-delay: 0s;"></div>
+            <div class="floating leaf" style="top: 25%; left: 85%; animation-delay: 3s;"></div>
+            <div class="floating bird" style="top: 40%; left: -80px; animation-delay: 5s; animation-duration: 18s;"></div>
+            <div class="floating leaf" style="top: 55%; left: 90%; animation-delay: 1s;"></div>
+            <div class="floating bird" style="top: 70%; left: -60px; animation-delay: 7s; animation-duration: 22s;"></div>
+            <div class="floating leaf" style="top: 85%; left: 75%; animation-delay: 4s;"></div>
+
+            <div class="container">
+                <div class="card">
+                    <header>
+                        <h1>Phân tích bài thơ: "Nhớ đồng"</h1>
+                        <p>Tác giả: Tố Hữu | Ngữ văn lớp 8</p>
+                    </header>
+                    
+                    <div class="content">
+                        <div class="poem">
+                            <div class="poem-line">Rồi một hôm nào , tôi thấy tôi </div>
+                            <div class="poem-line">Nhẹ nhàng như con chim cà lơi</div>
+                            <div class="poem-line">say đồng hương nắng vui ca hát</div>
+                            <div class="poem-line">trên chín tầng mây bát ngát trời....</div>
+                        </div>
+
+                        <div class="question">
+                            <h2>Câu 1: Thể thơ</h2>
+                            <div class="answer">
+                                Bài thơ được viết theo <span class="key-point">thể thơ 7 chữ</span>, dựa vào việc mỗi dòng thơ có <span class="key-point">7 chữ</span>.
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <h2>Câu 2: Yếu tố nghệ thuật</h2>
+                            <div class="answer">
+                                <p><strong>a) Vần và nhịp:</strong></p>
+                                <ul>
+                                    <li><span class="key-point">Vần liền:</span> "hát" – "bát" (trong các khổ thơ khác của bài)</li>
+                                    <li><span class="key-point">Nhịp thơ:</span> 4/3, 3/4, 2/2/3</li>
+                                </ul>
+                                
+                                <p style="margin-top: 15px;"><strong>b) Biện pháp tu từ:</strong></p>
+                                <div class="answer highlight">
+                                    <span class="key-point">??</span> ?? <span class="key-point">câu hỏi tu từ</span>??
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <h2>Câu 3: Chủ đề và thông điệp</h2>
+                            <div class="answer">
+                                <p><strong>Chủ đề:</strong> Nỗi nhớ da diết, khát vọng tự do và yêu cuộc sống, con người, quê hương của nhân vật trữ tình khi bị giam cầm trong nhà tù.</p>
+                                
+                                <p style="margin-top: 15px;"><strong>Thông điệp:</strong></p>
+                                <div class="answer highlight">
+                                    Thông điệp mà tác giả Tố Hữu gửi gắm qua bài thơ là lời nhắn nhủ về việc <span class="key-point">trân quý cuộc sống, tình yêu quê hương, và khát vọng sống tự do, hòa mình vào cuộc sống, con người và thiên nhiên bên ngoài.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                // Add more floating elements dynamically
+                document.addEventListener('DOMContentLoaded', function() {
+                    const body = document.body;
+                    
+                    for (let i = 0; i < 10; i++) {
+                        if (Math.random() > 0.5) {
+                            // Bird
+                            const bird = document.createElement('div');
+                            bird.className = 'floating bird';
+                            bird.style.top = Math.random() * 100 + '%';
+                            bird.style.left = '-100px';
+                            bird.style.animationDelay = Math.random() * 10 + 's';
+                            bird.style.animationDuration = (15 + Math.random() * 10) + 's';
+                            body.appendChild(bird);
+                        } else {
+                            // Leaf
+                            const leaf = document.createElement('div');
+                            leaf.className = 'floating leaf';
+                            leaf.style.top = Math.random() * 100 + '%';
+                            leaf.style.left = Math.random() * 100 + '%';
+                            leaf.style.animationDelay = Math.random() * 10 + 's';
+                            body.appendChild(leaf);
+                        }
+                    }
+                });
+            </script>
+        </body>
+        </html>
+    </div>
+
+    <script>
+        function showContent(option) {
+            document.getElementById('selector').style.display = 'none';
+            if (option === 1) {
+                document.getElementById('content1').style.display = 'block';
+            } else if (option === 2) {
+                document.getElementById('content2').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
+```
