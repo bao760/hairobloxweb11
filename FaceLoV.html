@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NeonVault — Ultimate (Futuristic + Smooth UI)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-1:#030416; --bg-2:#071029;
+      --glass: rgba(255,255,255,0.04);
+      --accent1:#00f0ff; --accent2:#9b5cff; --accent3:#39ff14;
+      --muted:rgba(230,238,246,0.6);
+      --card-shadow: 0 20px 60px rgba(59,8,160,0.14);
+      --glass-blur:12px;
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#e6eef6;background:radial-gradient(600px 240px at 10% 16%, rgba(155,92,255,0.06), transparent), radial-gradient(500px 200px at 90% 84%, rgba(0,240,255,0.04), transparent), linear-gradient(180deg,var(--bg-1),var(--bg-2));-webkit-font-smoothing:antialiased}
+
+    .container{max-width:1180px;margin:36px auto;padding:20px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:18px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:60px;height:60px;border-radius:12px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800;color:#021224;box-shadow:0 10px 40px rgba(155,92,255,0.14)}
+    h1{margin:0;font-size:20px}
+    .subtitle{color:var(--muted);font-size:13px}
+
+    /* layout pages */
+    .page{display:none}
+    .page.active{display:block}
+
+    /* card */
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);border-radius:var(--radius);padding:18px;backdrop-filter:blur(var(--glass-blur));box-shadow:var(--card-shadow)}
+
+    /* AUTH styles */
+    .auth-grid{display:grid;grid-template-columns:1fr 420px;gap:18px;align-items:stretch}
+    .auth-left{padding:20px}
+    .tabs{display:flex;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:6px;gap:6px}
+    .tab{flex:1;padding:10px;border-radius:10px;text-align:center;cursor:pointer;border:1px solid rgba(255,255,255,0.02);color:var(--muted)}
+    .tab.active{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#021224;font-weight:700;box-shadow:0 8px 30px rgba(59,8,160,0.12)}
+    .field{margin-top:12px}
+    label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+    input[type=email],input[type=password],input[type=text]{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    .auth-actions{display:flex;gap:10px;margin-top:12px}
+    .btn{cursor:pointer;padding:10px 14px;border-radius:10px;border:0;font-weight:700;transition:all .18s ease}
+    .btn-primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#021224;box-shadow:0 8px 30px rgba(0,240,255,0.06)}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
+
+    /* right splash */
+    .splash{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.012), transparent);min-height:240px}
+    .splash h2{margin:0 0 6px}
+    .splash .caps{font-family:monospace;font-size:13px;color:#9ee7ff;margin-top:12px}
+
+    /* Dashboard */
+    .dash-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .dash-user{font-weight:800}
+    .dash-actions{display:flex;gap:10px}
+    .controls{display:flex;gap:10px;align-items:center;margin-top:14px}
+    .controls input{padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit}
+
+    .create-panel{margin-top:12px;padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.2));border:1px solid rgba(255,255,255,0.02)}
+    .preview{margin-top:10px;padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);min-height:120px;border:1px solid rgba(255,255,255,0.03);overflow:auto}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:16px}
+    .site-card{position:relative;padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:1px solid rgba(255,255,255,0.03);overflow:hidden;transition:transform .18s ease,opacity .25s ease}
+    .site-card:hover{transform:translateY(-6px)}
+    .site-code{position:absolute;right:10px;top:10px;background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:6px 8px;border-radius:8px;color:#021224;font-weight:800}
+    .site-title{font-weight:800}
+    .site-desc{color:var(--muted);margin-top:8px;min-height:56px;overflow:hidden}
+    .site-actions{display:flex;gap:8px;margin-top:10px}
+
+    /* confirmation modal */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);z-index:120}
+    .modal.active{display:flex}
+    .modal-card{width:480px;max-width:94%;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);position:relative}
+    .close-x{position:absolute;right:12px;top:8px;background:transparent;border:0;color:var(--muted);font-size:18px}
+
+    /* nice micro-interactions */
+    .fade-out{animation:fadeOut .45s forwards}
+    @keyframes fadeOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-18px);height:0;margin:0;padding:0}}
+    .pulse-glow{animation:pulseGlow 2.6s infinite}
+    @keyframes pulseGlow{0%{box-shadow:0 0 0 rgba(0,240,255,0)}50%{box-shadow:0 0 40px rgba(0,240,255,0.06)}100%{box-shadow:0 0 0 rgba(0,240,255,0)}}
+
+    /* responsive */
+    @media (max-width:980px){.auth-grid{grid-template-columns:1fr} .grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header style="display:flex;align-items:center;gap:12px">
+      <div class="brand"><div class="logo">NV</div><div><h1>NeonVault</h1><div class="subtitle">Futuristic personal share pages — demo</div></div></div>
+      <div id="topUser" style="margin-left:auto;color:var(--muted)">Bạn: <span id="topUserName">Khách</span></div>
+    </header>
+
+    <!-- Page: Auth -->
+    <section id="authPage" class="page active card">
+      <div class="auth-grid">
+        <div class="auth-left">
+          <div class="tabs">
+            <div class="tab active" id="tabSignUp">Đăng ký</div>
+            <div class="tab" id="tabSignIn">Đăng nhập</div>
+          </div>
+
+          <div id="signupArea">
+            <div class="field"><label>Email</label><input id="suEmail" type="email" placeholder="you@domain.com"></div>
+            <div class="field"><label>Mật khẩu</label><input id="suPass" type="password" placeholder="Mật khẩu"></div>
+            <div class="field"><label>Nhập lại mật khẩu</label><input id="suPass2" type="password" placeholder="Nhập lại mật khẩu"></div>
+            <div class="auth-actions"><button class="btn btn-primary" id="doSignup">Tạo tài khoản</button><button class="btn btn-ghost" id="guestBtn">Vào nhanh</button></div>
+          </div>
+
+          <div id="signinArea" style="display:none">
+            <div class="field"><label>Email</label><input id="siEmail" type="email" placeholder="you@domain.com"></div>
+            <div class="field"><label>Mật khẩu</label><input id="siPass" type="password" placeholder="Mật khẩu"></div>
+            <div class="auth-actions"><button class="btn btn-primary" id="doSignin">Đăng nhập</button><button class="btn btn-ghost" id="backToSignup">Quay lại</button></div>
+          </div>
+        </div>
+
+        <div class="splash card" aria-hidden>
+          <h2>Welcome to NeonVault</h2>
+          <div class="subtitle">Create private pages & share by code</div>
+          <div class="caps">neonvault://local</div>
+          <div style="margin-top:18px"><button class="btn btn-ghost" onclick="document.getElementById('suEmail').value='demo@example.com';document.getElementById('suPass').value='demo123';document.getElementById('suPass2').value='demo123';">Auto-fill demo</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page: Dashboard -->
+    <section id="dashPage" class="page card">
+      <div class="dash-head"><div><div class="muted">Xin chào,</div><div id="dashUserName" class="dash-user">-</div></div><div class="dash-actions"><button class="btn btn-ghost" id="signoutBtn">Đăng xuất</button></div></div>
+
+      <div class="controls">
+        <button class="btn btn-primary pulse-glow" id="showCreate">Tạo File</button>
+        <button class="btn btn-ghost" id="showJoin">Join</button>
+        <input id="quickJoin" placeholder="Nhập mã 6 chữ số để join" />
+      </div>
+
+      <div id="createPanel" class="create-panel" style="display:none">
+        <label>Tên bài viết (thủ công)</label>
+        <input id="manualTitle" placeholder="Tiêu đề...">
+        <label style="margin-top:8px">Upload file (HTML / text)</label>
+        <input id="fileInput" type="file" accept=".html,.htm,text/*,*/*">
+        <div style="margin-top:10px;display:flex;gap:8px"><button class="btn btn-primary" id="createManual">Tạo thủ công</button><button class="btn btn-ghost" id="createFromFile">Tạo từ file</button><button class="btn btn-ghost" id="closeCreate">Đóng</button></div>
+        <div class="preview" id="createPreview">Preview sẽ hiển thị ở đây khi bạn upload file hoặc nhập nội dung.</div>
+      </div>
+
+      <div class="grid" id="sitesGrid">
+        <!-- cards injected -->
+      </div>
+    </section>
+
+    <!-- Join Modal -->
+    <div id="joinModal" class="modal"><div class="modal-card"><button class="close-x" id="joinClose">✕</button><h3>Tham gia bằng mã</h3><label>Mã (6 chữ số)</label><input id="joinCode" placeholder="123456" style="width:100%;padding:10px;margin-top:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit"><div style="display:flex;justify-content:flex-end;gap:8px;margin-top:12px"><button class="btn btn-ghost" id="joinCancel">Cancel</button><button class="btn btn-primary" id="joinConfirm">Submit</button></div></div></div>
+
+    <!-- Confirm Delete Modal -->
+    <div id="confirmModal" class="modal"><div class="modal-card"><button class="close-x" id="confirmClose">✕</button><h3 style="color:#ff8b8b">Xác nhận xóa</h3><div class="muted" style="margin-top:8px">Bạn có chắc muốn xóa file này? Hành động không thể hoàn tác.</div><div style="display:flex;justify-content:flex-end;gap:8px;margin-top:14px"><button class="btn btn-ghost" id="confirmCancel">Hủy</button><button class="btn btn-primary" id="confirmDelete" style="background:linear-gradient(90deg,#ff6b6b,#ff2d55);">Xóa</button></div></div></div>
+
+    <!-- Content Modal -->
+    <div id="contentModal" class="modal"><div class="modal-card" style="max-width:98%;width:920px;position:relative"><button class="close-x" id="contentClose">✕</button><div id="contentMeta" class="muted small"></div><div id="contentBox" style="margin-top:12px;background:#000;border-radius:10px;padding:12px;min-height:300px;color:#fff;overflow:auto"></div></div></div>
+
+  </div>
+
+  <script>
+    // Local DB
+    const USERS = 'nv_users_v4'; const SITES = 'nv_sites_v4';
+    function loadUsers(){ return JSON.parse(localStorage.getItem(USERS) || '{}'); }
+    function saveUsers(u){ localStorage.setItem(USERS, JSON.stringify(u)); }
+    function loadSites(){ return JSON.parse(localStorage.getItem(SITES) || '{}'); }
+    function saveSites(s){ localStorage.setItem(SITES, JSON.stringify(s)); }
+
+    // Elements
+    const authPage = document.getElementById('authPage'); const dashPage = document.getElementById('dashPage');
+    const tabSignUp = document.getElementById('tabSignUp'); const tabSignIn = document.getElementById('tabSignIn');
+    const signupArea = document.getElementById('signupArea'); const signinArea = document.getElementById('signinArea');
+    const topUserName = document.getElementById('topUserName'); const dashUserName = document.getElementById('dashUserName');
+
+    const doSignup = document.getElementById('doSignup'); const doSignin = document.getElementById('doSignin'); const guestBtn = document.getElementById('guestBtn'); const backToSignup = document.getElementById('backToSignup');
+    const showCreate = document.getElementById('showCreate'); const showJoin = document.getElementById('showJoin'); const quickJoin = document.getElementById('quickJoin');
+    const createPanel = document.getElementById('createPanel'); const createPreview = document.getElementById('createPreview'); const manualTitle = document.getElementById('manualTitle'); const fileInput = document.getElementById('fileInput');
+    const createManual = document.getElementById('createManual'); const createFromFile = document.getElementById('createFromFile'); const closeCreate = document.getElementById('closeCreate');
+
+    const sitesGrid = document.getElementById('sitesGrid');
+    const signoutBtn = document.getElementById('signoutBtn');
+
+    const joinModal = document.getElementById('joinModal'); const joinClose = document.getElementById('joinClose'); const joinCancel = document.getElementById('joinCancel'); const joinConfirm = document.getElementById('joinConfirm'); const joinCode = document.getElementById('joinCode');
+    const contentModal = document.getElementById('contentModal'); const contentBox = document.getElementById('contentBox'); const contentMeta = document.getElementById('contentMeta'); const contentClose = document.getElementById('contentClose');
+
+    const confirmModal = document.getElementById('confirmModal'); const confirmClose = document.getElementById('confirmClose'); const confirmCancel = document.getElementById('confirmCancel'); const confirmDelete = document.getElementById('confirmDelete');
+
+    // State
+    let currentUser = null; let deleteTargetCode = null; let lastFileText = '';
+
+    // Utilities
+    function toast(msg){ console.log('TOAST:', msg); }
+    function genCode(){ return Math.floor(100000 + Math.random()*900000).toString(); }
+    function escapeHtml(s){ if(!s) return ''; return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+    function escapeAttr(s){ if(!s) return ''; return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/'/g,'&#39;'); }
+
+    // Auth tabs
+    tabSignUp.addEventListener('click', ()=>{ tabSignUp.classList.add('active'); tabSignIn.classList.remove('active'); signupArea.style.display='block'; signinArea.style.display='none'; });
+    tabSignIn.addEventListener('click', ()=>{ tabSignIn.classList.add('active'); tabSignUp.classList.remove('active'); signupArea.style.display='none'; signinArea.style.display='block'; });
+
+    // Signup
+    doSignup.addEventListener('click', ()=>{
+      const email = document.getElementById('suEmail').value.trim().toLowerCase(); const p1 = document.getElementById('suPass').value; const p2 = document.getElementById('suPass2').value;
+      if(!email||!p1){ alert('Nhập email & mật khẩu'); return; }
+      if(p1 !== p2){ alert('Mật khẩu không khớp'); return; }
+      const users = loadUsers(); if(users[email]){ alert('Email đã tồn tại — đăng nhập'); return; }
+      users[email] = {email, pw:p1}; saveUsers(users); currentUser = {email}; openDashboard(); }
+    );
+
+    // Signin
+    doSignin.addEventListener('click', ()=>{
+      const email = document.getElementById('siEmail').value.trim().toLowerCase(); const pw = document.getElementById('siPass').value; const users = loadUsers(); if(!users[email] || users[email].pw !== pw){ alert('Đăng nhập thất bại'); return; } currentUser = {email}; openDashboard(); }
+    );
+
+    guestBtn.addEventListener('click', ()=>{ currentUser = {email:'guest_'+Math.random().toString(36).slice(2,8)}; openDashboard(); });
+    backToSignup.addEventListener('click', ()=>{ tabSignUp.click(); });
+
+    // Open dashboard
+    function openDashboard(){ authPage.classList.remove('active'); dashPage.classList.add('active'); topUserName.textContent = currentUser.email; dashUserName.textContent = currentUser.email; renderSites(); }
+
+    // Signout
+    signoutBtn.addEventListener('click', ()=>{ if(confirm('Đăng xuất?')){ currentUser=null; dashPage.classList.remove('active'); authPage.classList.add('active'); topUserName.textContent='Khách'; } });
+
+    // CREATE panel
+    showCreate.addEventListener('click', ()=>{ createPanel.style.display = createPanel.style.display === 'none' ? 'block' : 'none'; createPanel.scrollIntoView({behavior:'smooth'}); });
+    closeCreate.addEventListener('click', ()=>{ createPanel.style.display='none'; });
+
+    // File preview
+    fileInput.addEventListener('change', ()=>{
+      const f = fileInput.files[0]; if(!f) return; const reader = new FileReader(); reader.onload = e=>{ lastFileText = e.target.result; renderPreview(f.name, lastFileText); }; reader.readAsText(f);
+    });
+    function renderPreview(name, text){ createPreview.innerHTML = `<div style="color:var(--muted);font-size:13px">File: ${escapeHtml(name)}</div>`; if(/\.html?$/.test(name.toLowerCase())){ const iframe = document.createElement('iframe'); iframe.style.width='100%'; iframe.style.height='300px'; iframe.style.border='0'; iframe.srcdoc = text; iframe.sandbox=''; createPreview.appendChild(iframe); } else { const pre = document.createElement('pre'); pre.style.marginTop='8px'; pre.textContent = text.slice(0,20000); createPreview.appendChild(pre); } }
+
+    // Create manual
+    createManual.addEventListener('click', ()=>{
+      if(!currentUser){ alert('Đăng nhập trước'); return; }
+      const title = manualTitle.value.trim() || 'Không tên'; const content = createPreview.innerText.trim() || '';
+      const sites = loadSites(); let code = genCode(); while(sites[code]) code = genCode(); sites[code] = { code, owner: currentUser.email, title, content: content || null, rawHtml: null, createdAt: Date.now(), members:[currentUser.email] }; saveSites(sites); manualTitle.value=''; createPreview.innerHTML=''; createPanel.style.display='none'; toast('Tạo thành công: '+code); renderSites(); }
+    );
+
+    // Create from file
+    createFromFile.addEventListener('click', ()=>{
+      const f = fileInput.files[0]; if(!f){ alert('Chưa chọn file'); return; }
+      if(!currentUser){ alert('Đăng nhập trước'); return; }
+      const reader = new FileReader(); reader.onload = e=>{ const txt = e.target.result; const title = manualTitle.value.trim() || f.name; const sites = loadSites(); let code = genCode(); while(sites[code]) code = genCode(); if(/\.html?$/.test(f.name.toLowerCase())){ sites[code] = { code, owner: currentUser.email, title, content: null, rawHtml: txt, createdAt: Date.now(), members:[currentUser.email] }; } else { sites[code] = { code, owner: currentUser.email, title, content: txt, rawHtml: null, createdAt: Date.now(), members:[currentUser.email] }; } saveSites(sites); manualTitle.value=''; fileInput.value=''; createPreview.innerHTML=''; createPanel.style.display='none'; toast('Tạo từ file thành công: '+code); renderSites(); }; reader.readAsText(f);
+    });
+
+    // Render sites
+    function renderSites(){ sitesGrid.innerHTML=''; const s = loadSites(); const arr = Object.values(s).filter(x=>x.owner===currentUser.email).sort((a,b)=>b.createdAt-a.createdAt); if(arr.length===0){ sitesGrid.innerHTML = '<div class="card muted">Bạn chưa tạo site nào — tạo ngay.</div>'; return; } arr.forEach(site=>{ const card = document.createElement('div'); card.className='site-card'; card.dataset.code = site.code; card.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center"><div class="site-title">${escapeHtml(site.title)}</div><div class="site-code">${site.code}</div></div><div class="site-desc">${escapeHtml((site.content||site.rawHtml||'').slice(0,220))}${(site.content||site.rawHtml||'').length>220?'...':''}</div><div class="site-actions"><button class="btn btn-primary" onclick="openSite('${site.code}')">Mở</button><button class="btn btn-ghost" onclick="copy('${site.code}')">Sao chép mã</button><button class="btn btn-ghost" onclick="promptDelete('${site.code}')">Xóa</button></div>`; sitesGrid.appendChild(card); }); }
+
+    window.copy = function(code){ navigator.clipboard?.writeText(code).then(()=>toast('Đã sao chép: '+code)); }
+
+    // Open site content (owner view)
+    window.openSite = function(code){ const site = loadSites()[code]; if(!site){ alert('Không tồn tại'); return; } showContent(site); }
+
+    // Show content modal
+    function showContent(site){ contentModal.classList.add('active'); contentMeta.textContent = `Site: ${site.title} • Mã: ${site.code} • Owner: ${site.owner}`; if(site.rawHtml){ contentBox.innerHTML = `<iframe style="width:100%;height:60vh;border:0;border-radius:8px" srcdoc="${escapeAttr(site.rawHtml)}" sandbox></iframe>`; } else { contentBox.innerHTML = `<pre style="white-space:pre-wrap">${escapeHtml(site.content||'(Không có nội dung)')}</pre>`; } }
+    contentClose.addEventListener('click', ()=>{ contentModal.classList.remove('active'); contentBox.innerHTML=''; });
+
+    // JOIN modal actions
+    showJoin.addEventListener('click', ()=>{ joinModal.classList.add('active'); joinCode.value=''; joinCode.focus(); });
+    joinClose.addEventListener('click', ()=>{ joinModal.classList.remove('active'); });
+    joinCancel.addEventListener('click', ()=>{ joinModal.classList.remove('active'); });
+    joinConfirm.addEventListener('click', ()=>{ const code = joinCode.value.trim(); if(!/^[0-9]{6}$/.test(code)){ alert('Nhập mã 6 chữ số'); return; } const sites = loadSites(); if(!sites[code]){ alert('Mã không tồn tại'); return; } if(!sites[code].members) sites[code].members = []; const user = currentUser ? currentUser.email : 'anonymous'; if(!sites[code].members.includes(user)) sites[code].members.push(user); saveSites(sites); joinModal.classList.remove('active'); showContent(sites[code]); });
+
+    // quick join
+    quickJoin.addEventListener('keypress', e=>{ if(e.key==='Enter'){ const v = quickJoin.value.trim(); if(!/^[0-9]{6}$/.test(v)){ alert('Nhập mã 6 chữ số'); return; } const s = loadSites()[v]; if(!s){ alert('Mã không tồn tại'); return; } if(!s.members) s.members = []; const user = currentUser ? currentUser.email : 'anonymous'; if(!s.members.includes(user)) s.members.push(user); saveSites(loadSites()); showContent(s); } });
+
+    // Delete flow: open confirm modal
+    window.promptDelete = function(code){ deleteTargetCode = code; confirmModal.classList.add('active'); };
+    confirmClose.addEventListener('click', ()=>{ confirmModal.classList.remove('active'); deleteTargetCode = null; });
+    confirmCancel.addEventListener('click', ()=>{ confirmModal.classList.remove('active'); deleteTargetCode = null; });
+    confirmDelete.addEventListener('click', ()=>{
+      if(!deleteTargetCode){ confirmModal.classList.remove('active'); return; }
+      // animate fade-out
+      const card = document.querySelector(`.site-card[data-code='${deleteTargetCode}']`);
+      if(card){ card.style.transition = 'all .45s ease'; card.classList.add('fade-out'); setTimeout(()=>{ // actually remove
+        const sites = loadSites(); delete sites[deleteTargetCode]; saveSites(sites); renderSites(); confirmModal.classList.remove('active'); deleteTargetCode = null; }, 450); }
+      else { const sites = loadSites(); delete sites[deleteTargetCode]; saveSites(sites); renderSites(); confirmModal.classList.remove('active'); deleteTargetCode = null; }
+    });
+
+    // Utility: load last user if exists
+    (function init(){ const users = loadUsers(); const last = Object.keys(users)[0]; if(last){ currentUser = {email:last}; openDashboard(); } else { authPage.classList.add('active'); } })();
+
+  </script>
+</body>
+</html>
