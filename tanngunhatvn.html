@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bài Kiểm Tra Kỹ Thuật Vẽ</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; padding: 20px; }
+    h1, h2 { text-align: center; }
+    .question { margin-bottom: 20px; padding: 10px; border-left: 4px solid #ccc; }
+    .options label { display: block; margin: 5px 0; }
+    input[type="text"] { width: 200px; padding: 5px; }
+    button { display: block; margin: 20px auto; padding: 10px 30px; font-size: 18px; background: #4CAF50; color: white; border: none; cursor: pointer; }
+    button:hover { background: #45a049; }
+    #result { margin-top: 30px; padding: 15px; background: #f9f9f9; border: 1px solid #ddd; display: none; }
+    .correct { color: green; }
+    .incorrect { color: red; }
+    .score { font-size: 20px; font-weight: bold; text-align: center; margin: 15px 0; }
+  </style>
+</head>
+<body>
+  <h1>Bài Kiểm Tra Kỹ Thuật Vẽ</h1>
+  <form id="quizForm">
+    <!-- Câu 1 - 12: Trắc nghiệm -->
+    <div class="question">
+      <p><strong>Câu 1.</strong> Phép chiếu vuông góc có các tia chiếu:</p>
+      <div class="options">
+        <label><input type="radio" name="q1" value="A"> A. song song với nhau</label>
+        <label><input type="radio" name="q1" value="B"> B. Song song và vuông góc với mặt phẳng hình chiếu</label>
+        <label><input type="radio" name="q1" value="C"> C. đồng quy tại điểm</label>
+        <label><input type="radio" name="q1" value="D"> D. vuông góc với nhau</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <p><strong>Câu 2.</strong> Khổ giấy A4 có kích thước:</p>
+      <div class="options">
+        <label><input type="radio" name="q2" value="A"> A. 297 x 210</label>
+        <label><input type="radio" name="q2" value="B"> B. 420 x 297</label>
+        <label><input type="radio" name="q2" value="C"> C. 594 x 420</label>
+        <label><input type="radio" name="q2" value="D"> D. 1189 x 841</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <p><strong>Câu 3.</strong> Bản vẽ kĩ thuật dùng để làm gì?</p>
+      <div class="options">
+        <label><input type="radio" name="q3" value="A"> A. Học tập</label>
+        <label><input type="radio" name="q3" value="B"> B. Giải trí</label>
+        <label><input type="radio" name="q3" value="C"> C. Thay thế sản phẩm</label>
+        <label><input type="radio" name="q3" value="D"> D. Chế tạo, thi công, lắp ráp,…</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <p><strong>Câu 4.</strong> Trên bản vẽ có ghi tỉ lệ 5:1 có nghĩa là:</p>
+      <div class="options">
+        <label><input type="radio" name="q4" value="A"> A. hình biểu diễn năm lần vật thể</label>
+        <label><input type="radio" name="q4" value="B"> B. hình biểu diễn bằng vật thể</label>
+        <label><input type="radio" name="q4" value="C"> C. vật thể lớn gấp năm hình biểu diễn</label>
+        <label><input type="radio" name="q4" value="D"> D. đáp án khác</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <p><strong>Câu 5.</strong> Kí hiệu sau đây quy ước bộ phận nào trong ngôi nhà?</p>
+      <div class="options">
+        <label><input type="radio" name="q5" value="A"> A. Cửa đi đơn hai cánh</label>
+        <label><input type="radio" name="q5" value="B"> B. Cửa đi một cánh</label>
+        <label><input type="radio" name="q5" value="C"> C. Cửa sổ kép</label>
+        <label><input type="radio" name="q5" value="D"> D. Cửa sổ đơn</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <p><strong>Câu 6.</strong> Trình tự đọc bản vẽ chi tiết là:</p>
+      <div class="options">
+        <label><input type="radio" name="q6" value="A"> A. 4 → 1 → 2 → 3</label>
+        <label><input type="radio" name="q6" value="B"> B. 2 → 1 → 4 → 3</label>
+        <label><input type="radio" name="q6" value="C"> C. 1 → 2 → 3 → 4</label>
+        <label><input type="radio" name="q6" value="D"> D. 3 → 4 → 2 → 4</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <p><strong>Câu 7.</strong> Trên bản vẽ có ghi tỉ lệ 1:10 có nghĩa là:</p>
+      <div class="options">
+        <label><input type="radio" name="q7" value="A"> A. hình biểu diễn gấp mười vật thể</label>
+        <label><input type="radio" name="q7" value="B"> B. vật thể gấp mười hình biểu diễn</label>
+        <label><input type="radio" name="q7" value="C"> C. hình biểu diễn bằng vật thể</label>
+        <label><input type="radio" name="q7" value="D"> D. đáp án khác</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <p><strong>Câu 8.</strong> Phép chiếu song song có các tia chiếu:</p>
+      <div class="options">
+        <label><input type="radio" name="q8" value="A"> A. đồng quy tại điểm</label>
+        <label><input type="radio" name="q8" value="B"> B. vuông góc với mặt phẳng hình chiếu</label>
+        <label><input type="radio" name="q8" value="C"> C. song song với nhau</label>
+        <label><input type="radio" name="q8" value="D"> D. vuông góc với nhau</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <p><strong>Câu 9.</strong> Bản vẽ kĩ thuật dùng để làm gì?</p>
+      <div class="options">
+        <label><input type="radio" name="q9" value="A"> A. Học tập</label>
+        <label><input type="radio" name="q9" value="B"> B. Giải trí</label>
+        <label><input type="radio" name="q9" value="C"> C. Thay thế sản phẩm</label>
+        <label><input type="radio" name="q9" value="D"> D. Chế tạo, thi công, lắp ráp,…</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <p><strong>Câu 10.</strong> Khổ giấy A3 có kích thước:</p>
+      <div class="options">
+        <label><input type="radio" name="q10" value="A"> A. 420 x 297</label>
+        <label><input type="radio" name="q10" value="B"> B. 297 x 210</label>
+        <label><input type="radio" name="q10" value="C"> C. 594 x 420</label>
+        <label><input type="radio" name="q10" value="D"> D. 1189 x 841</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <p><strong>Câu 11.</strong> Kí hiệu sau đây quy ước bộ phận nào trong ngôi nhà?</p>
+      <div class="options">
+        <label><input type="radio" name="q11" value="A"> A. Cửa sổ đơn</label>
+        <label><input type="radio" name="q11" value="B"> B. Cửa đi đơn hai cánh</label>
+        <label><input type="radio" name="q11" value="C"> C. Cửa sổ kép</label>
+        <label><input type="radio" name="q11" value="D"> D. Cửa đi một cánh</label>
+      </div>
+    </div>
+
+    <div class="question">
+      <p><strong>Câu 12.</strong> Trình tự đọc bản vẽ nhà là:</p>
+      <div class="options">
+        <label><input type="radio" name="q12" value="A"> A. 2 → 1 → 4 → 3</label>
+        <label><input type="radio" name="q12" value="B"> B. 4 → 1 → 2 → 3</label>
+        <label><input type="radio" name="q12" value="C"> C. 2 → 4 → 3 → 1</label>
+        <label><input type="radio" name="q12" value="D"> D. 1 → 2 → 3 → 4</label>
+      </div>
+    </div>
+
+    <!-- Câu 13 - 16: Đánh Đ/S -->
+    <h2>Đánh dấu "Đ" nếu đúng, "S" nếu sai</h2>
+
+    <div class="question">
+      <p><strong>Câu 13.</strong> Nét liền mảnh được dùng để vẽ:</p>
+      <label><input type="radio" name="q13a" value="Đ"> Đ</label>
+      <label><input type="radio" name="q13a" value="S"> S</label> → A. đường bao thấy<br>
+      <label><input type="radio" name="q13b" value="Đ"> Đ</label>
+      <label><input type="radio" name="q13b" value="S"> S</label> → B. cạnh khuất<br>
+      <label><input type="radio" name="q13c" value="Đ"> Đ</label>
+      <label><input type="radio" name="q13c" value="S"> S</label> → C. đường bao khuất<br>
+      <label><input type="radio" name="q13d" value="Đ"> Đ</label>
+      <label><input type="radio" name="q13d" value="S"> S</label> → D. cạnh thấy
+    </div>
+
+    <div class="question">
+      <p><strong>Câu 14.</strong> Hình lăng trụ đáy tam giác đều được bao bởi:</p>
+      <label><input type="radio" name="q14b" value="Đ"> Đ</label>
+      <label><input type="radio" name="q14b" value="S"> S</label> → B. các mặt bên là hình chữ nhật bằng nhau.<br>
+      <label><input type="radio" name="q14c" value="Đ"> Đ</label>
+      <label><input type="radio" name="q14c" value="S"> S</label> → C. các mặt đáy là hình vuông<br>
+      <label><input type="radio" name="q14d" value="Đ"> Đ</label>
+      <label><input type="radio" name="q14d" value="S"> S</label> → D. các mặt bên là hình tam giác cân bằng nhau.<br>
+      <label><input type="radio" name="q14e" value="Đ"> Đ</label>
+      <label><input type="radio" name="q14e" value="S"> S</label> → E. các mặt đáy là hình tam giác đều bằng nhau
+    </div>
+
+    <div class="question">
+      <p><strong>Câu 15.</strong> Nét liền đậm được dùng để vẽ:</p>
+      <label><input type="radio" name="q15a" value="Đ"> Đ</label>
+      <label><input type="radio" name="q15a" value="S"> S</label> → A. đường bao thấy<br>
+      <label><input type="radio" name="q15b" value="Đ"> Đ</label>
+      <label><input type="radio" name="q15b" value="S"> S</label> → B. đường bao khuất<br>
+      <label><input type="radio" name="q15c" value="Đ"> Đ</label>
+      <label><input type="radio" name="q15c" value="S"> S</label> → C. cạnh khuất<br>
+      <label><input type="radio" name="q15d" value="Đ"> Đ</label>
+      <label><input type="radio" name="q15d" value="S"> S</label> → D. cạnh thấy
+    </div>
+
+    <div class="question">
+      <p><strong>Câu 16.</strong> Hình chóp đều được bao bởi:</p>
+      <label><input type="radio" name="q16a" value="Đ"> Đ</label>
+      <label><input type="radio" name="q16a" value="S"> S</label> → A. các mặt bên là hình chữ nhật bằng nhau.<br>
+      <label><input type="radio" name="q16b" value="Đ"> Đ</label>
+      <label><input type="radio" name="q16b" value="S"> S</label> → B. các mặt bên là hình tam giác cân bằng nhau.<br>
+      <label><input type="radio" name="q16c" value="Đ"> Đ</label>
+      <label><input type="radio" name="q16c" value="S"> S</label> → C. mặt đáy là hình tam giác đều<br>
+      <label><input type="radio" name="q16d" value="Đ"> Đ</label>
+      <label><input type="radio" name="q16d" value="S"> S</label> → D. mặt đáy là hình vuông
+    </div>
+
+    <!-- Câu 17 - 24: Điền vào chỗ trống -->
+    <h2>Điền vào chỗ trống</h2>
+
+    <div class="question">
+      <p><strong>Câu 17.</strong> Bản vẽ chi tiết dùng để <input type="text" name="q17"> và <input type="text" name="q17b"> một chi tiết máy.</p>
+    </div>
+
+    <div class="question">
+      <p><strong>Câu 18.</strong> Hình chiếu cạnh có hướng chiếu <input type="text" name="q18">.</p>
+    </div>
+
+    <div class="question">
+      <p><strong>Câu 19.</strong> Phương pháp chiếu góc thứ nhất thì hình chiếu bằng đặt <input type="text" name="q19"> hình chiếu đứng.</p>
+    </div>
+
+    <div class="question">
+      <p><strong>Câu 20.</strong> Bản vẽ lắp diễn tả <input type="text" name="q20"> và <input type="text" name="q20b"> giữa các chi tiết máy.</p>
+    </div>
+
+    <div class="question">
+      <p><strong>Câu 21.</strong> Hình chiếu đứng có hướng chiếu <input type="text" name="q21">.</p>
+    </div>
+
+    <div class="question">
+      <p><strong>Câu 22.</strong> Phương pháp chiếu góc thứ nhất thì hình chiếu cạnh đặt <input type="text" name="q22"> hình chiếu đứng.</p>
+    </div>
+
+    <div class="question">
+      <p><strong>Câu 23.</strong> Mặt phẳng hình chiếu bằng đặt ở <input type="text" name="q23"> vật thể.</p>
+    </div>
+
+    <div class="question">
+      <p><strong>Câu 24.</strong> Mặt phẳng hình chiếu cạnh đặt ở <input type="text" name="q24"> vật thể.</p>
+    </div>
+
+    <button type="button" onclick="submitQuiz()">Nộp Bài</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    function submitQuiz() {
+      let score = 0;
+      let total = 24;
+      let feedback = '';
+
+      // Đáp án đúng
+      const answers = {
+        q1: 'B', q2: 'A', q3: 'D', q4: 'A', q5: 'S', // Câu 5 đặc biệt: bạn nói là "S"
+        q6: 'B', q7: 'B', q8: 'C', q9: 'D', q10: 'A', q11: 'D', q12: 'A'
+      };
+
+      // Kiểm tra câu 1-12
+      for (let i = 1; i <= 12; i++) {
+        const q = `q${i}`;
+        const selected = document.querySelector(`input[name="${q}"]:checked`);
+        const userAns = selected ? selected.value : '';
+        const correct = answers[q];
+        const isCorrect = (q === 'q5') ? (userAns === 'S') : (userAns === correct);
+        if (isCorrect) score++;
+        feedback += `<p><strong>Câu ${i}:</strong> ${isCorrect ? '<span class="correct">✓ Đúng</span>' : `<span class="incorrect">✗ Sai (Đáp án đúng: ${correct})</span>`}</p>`;
+      }
+
+      // Câu 13: tất cả S
+      const q13Correct = { a: 'S', b: 'S', c: 'S', d: 'S' };
+      let q13Score = 0;
+      for (let key of ['a','b','c','d']) {
+        const val = document.querySelector(`input[name="q13${key}"]:checked`)?.value || '';
+        if (val === q13Correct[key]) q13Score++;
+      }
+      if (q13Score === 4) score++;
+      feedback += `<p><strong>Câu 13:</strong> ${q13Score === 4 ? '<span class="correct">✓ Đúng</span>' : `<span class="incorrect">✗ Sai (${q13Score}/4)</span>`}</p>`;
+
+      // Câu 14: B=Đ, E=Đ; C=S, D=S
+      const q14Correct = { b: 'Đ', c: 'S', d: 'S', e: 'Đ' };
+      let q14Score = 0;
+      for (let key of ['b','c','d','e']) {
+        const val = document.querySelector(`input[name="q14${key}"]:checked`)?.value || '';
+        if (val === q14Correct[key]) q14Score++;
+      }
+      if (q14Score === 4) score++;
+      feedback += `<p><strong>Câu 14:</strong> ${q14Score === 4 ? '<span class="correct">✓ Đúng</span>' : `<span class="incorrect">✗ Sai (${q14Score}/4)</span>`}</p>`;
+
+      // Câu 15: A=Đ, D=Đ; B=S, C=S
+      const q15Correct = { a: 'Đ', b: 'S', c: 'S', d: 'Đ' };
+      let q15Score = 0;
+      for (let key of ['a','b','c','d']) {
+        const val = document.querySelector(`input[name="q15${key}"]:checked`)?.value || '';
+        if (val === q15Correct[key]) q15Score++;
+      }
+      if (q15Score === 4) score++;
+      feedback += `<p><strong>Câu 15:</strong> ${q15Score === 4 ? '<span class="correct">✓ Đúng</span>' : `<span class="incorrect">✗ Sai (${q15Score}/4)</span>`}</p>`;
+
+      // Câu 16: chỉ B=Đ (các câu còn lại S)
+      const q16Correct = { a: 'S', b: 'Đ', c: 'S', d: 'S' };
+      let q16Score = 0;
+      for (let key of ['a','b','c','d']) {
+        const val = document.querySelector(`input[name="q16${key}"]:checked`)?.value || '';
+        if (val === q16Correct[key]) q16Score++;
+      }
+      if (q16Score === 4) score++;
+      feedback += `<p><strong>Câu 16:</strong> ${q16Score === 4 ? '<span class="correct">✓ Đúng</span>' : `<span class="incorrect">✗ Sai (${q16Score}/4)</span>`}</p>`;
+
+      // Câu 17-24: điền từ
+      const fillAnswers = {
+        q17: ['chế tạo', 'kiểm tra'],
+        q17b: ['chế tạo', 'kiểm tra'],
+        q18: ['từ phải sang trái'],
+        q19: ['dưới'],
+        q20: ['hình dạng'],
+        q20b: ['vị trí tương đối'],
+        q21: ['từ trước ra sau'],
+        q22: ['bên phải'],
+        q23: ['dưới'],
+        q24: ['bên phải']
+      };
+
+      // Câu 17: 2 ô, đúng cả 2 mới tính điểm
+      const ans17a = document.querySelector('input[name="q17"]').value.trim().toLowerCase();
+      const ans17b = document.querySelector('input[name="q17b"]').value.trim().toLowerCase();
+      const correct17 = fillAnswers.q17.some(x => x === ans17a) && fillAnswers.q17b.some(x => x === ans17b);
+      if (correct17) score++;
+      feedback += `<p><strong>Câu 17:</strong> ${correct17 ? '<span class="correct">✓ Đúng</span>' : '<span class="incorrect">✗ Sai</span>'}</p>`;
+
+      // Câu 18
+      const ans18 = document.querySelector('input[name="q18"]').value.trim().toLowerCase();
+      const correct18 = ans18 === 'từ phải sang trái';
+      if (correct18) score++;
+      feedback += `<p><strong>Câu 18:</strong> ${correct18 ? '<span class="correct">✓ Đúng</span>' : '<span class="incorrect">✗ Sai</span>'}</p>`;
+
+      // Câu 19
+      const ans19 = document.querySelector('input[name="q19"]').value.trim().toLowerCase();
+      const correct19 = ans19 === 'dưới';
+      if (correct19) score++;
+      feedback += `<p><strong>Câu 19:</strong> ${correct19 ? '<span class="correct">✓ Đúng</span>' : '<span class="incorrect">✗ Sai</span>'}</p>`;
+
+      // Câu 20
+      const ans20 = document.querySelector('input[name="q20"]').value.trim().toLowerCase();
+      const ans20b = document.querySelector('input[name="q20b"]').value.trim().toLowerCase();
+      const correct20 = ans20 === 'hình dạng' && ans20b === 'vị trí tương đối';
+      if (correct20) score++;
+      feedback += `<p><strong>Câu 20:</strong> ${correct20 ? '<span class="correct">✓ Đúng</span>' : '<span class="incorrect">✗ Sai</span>'}</p>`;
+
+      // Câu 21
+      const ans21 = document.querySelector('input[name="q21"]').value.trim().toLowerCase();
+      const correct21 = ans21 === 'từ trước ra sau';
+      if (correct21) score++;
+      feedback += `<p><strong>Câu 21:</strong> ${correct21 ? '<span class="correct">✓ Đúng</span>' : '<span class="incorrect">✗ Sai</span>'}</p>`;
+
+      // Câu 22
+      const ans22 = document.querySelector('input[name="q22"]').value.trim().toLowerCase();
+      const correct22 = ans22 === 'bên phải';
+      if (correct22) score++;
+      feedback += `<p><strong>Câu 22:</strong> ${correct22 ? '<span class="correct">✓ Đúng</span>' : '<span class="incorrect">✗ Sai</span>'}</p>`;
+
+      // Câu 23
+      const ans23 = document.querySelector('input[name="q23"]').value.trim().toLowerCase();
+      const correct23 = ans23 === 'dưới';
+      if (correct23) score++;
+      feedback += `<p><strong>Câu 23:</strong> ${correct23 ? '<span class="correct">✓ Đúng</span>' : '<span class="incorrect">✗ Sai</span>'}</p>`;
+
+      // Câu 24
+      const ans24 = document.querySelector('input[name="q24"]').value.trim().toLowerCase();
+      const correct24 = ans24 === 'bên phải';
+      if (correct24) score++;
+      feedback += `<p><strong>Câu 24:</strong> ${correct24 ? '<span class="correct">✓ Đúng</span>' : '<span class="incorrect">✗ Sai</span>'}</p>`;
+
+      // Hiển thị kết quả
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = `
+        <div class="score">Điểm của bạn: ${score}/${total} (${Math.round((score/total)*100)}%)</div>
+        ${feedback}
+      `;
+      resultDiv.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
